@@ -1,28 +1,47 @@
-# SewaMobilYuk - System Design & Architecture 🚗
+# SewaMobilYuk — System Design & Architecture 🚗
 
-Repository ini berisi dokumentasi analisis dan perancangan sistem untuk aplikasi **SewaMobilYuk**, sebuah platform manajemen penyewaan mobil secara online. Dokumentasi ini dibuat sebagai cetak biru (blueprint) arsitektur sistem sebelum masuk ke tahap pengembangan kode (coding).
+Repository ini isinya dokumen analisis dan perancangan sistem buat aplikasi **SewaMobilYuk** (platform rental mobil online). Semua diagram di sini dibuat sebagai cetak biru (*blueprint*) arsitektur sistem sebelum nanti masuk ke tahap *coding*.
 
-## 📌 Status Proyek
-* **Fase:** Tahap 1 - Analisis & Perancangan Sistem (System Design)
-* **Tools Perancangan:** StarUML
-* 
-## 👥 Aktor Sistem
-Untuk menjaga efisiensi jembatan data dan kemudahan interaksi, sistem ini dirancang dengan menyatukan aktor utama ke dalam sebuah peran yang terintegrasi (User/Pengguna), yang nantinya mencakup:
-1. **Pelanggan (Customer):** Melakukan pencarian armada, reservasi mobil, dan melakukan konfirmasi pembayaran.
-2. **Admin:** Mengelola data ketersediaan mobil (armada), memantau transaksi, dan memverifikasi pembayaran.
+---
+
+## 📌 Status Proyek & Spesifikasi
+* **Fase:** Tahap 1 — Analisis & Perancangan Sistem (*System Design*)
+* **Metode:** *Object-Oriented Analysis and Design* (OOAD)
+* **Tools:** StarUML
+
+---
+
+## 👥 Aktor & Hak Akses Sistem
+Biar struktur datanya efisien dan interaksinya gampang, sistem ini dirancang dengan menyatukan aktor utama ke dalam satu peran yang terintegrasi (**User/Pengguna**). Ini detail hak aksesnya:
+
+| Aktor | Peran Utama | Fitur yang Bisa Diakses |
+| :--- | :--- | :--- |
+| **Pelanggan** *(Customer)* | Pesan layanan sewa mobil secara mandiri. | Cari mobil, reservasi, dan konfirmasi pembayaran. |
+| **Admin** | Kelola operasional bisnis & validasi data. | Manajemen data mobil, pantau transaksi, dan verifikasi pembayaran. |
 
 ---
 
 ## 📊 Rancangan Diagram Sistem
 
-Berikut adalah visualisasi alur bisnis dan interaksi sistem yang dirancang menggunakan StarUML:
+Ini visualisasi alur bisnis dan interaksi sistem yang sudah dimodelkan pakai StarUML:
 
 ### 1. Use Case Diagram
-Diagram ini memetakan hubungan dan batasan antara pengguna dengan fungsi-fungsi utama yang disediakan oleh sistem SewaMobilYuk, seperti manajemen mobil, pemesanan (reservasi), hingga pencatatan data transaksi pembayaran.
+Diagram ini memetakan hubungan dan batasan antara pengguna sama fungsi-fungsi utama di sistem SewaMobilYuk. Fokus utamanya ada di manajemen data mobil (armada), proses reservasi, sampai pencatatan transaksi pembayaran.
 
 ![Use Case Diagram](usecase-rental.png)
 
 ### 2. Activity Diagram
-Diagram ini menggambarkan alur kerja pengguna secara visual di dalam sistem. Rancangan ini memastikan penanganan alur logika berjalan dengan baik, termasuk kejelasan visual pada alur validasi seperti penanganan skenario "gagal login" yang akan mengarahkan pengguna kembali ke halaman input awal.
+Diagram ini menggambarkan alur kerja pengguna secara visual di dalam sistem biar logika bisnisnya jelas.
+
+> 💡 **Catatan Validasi Sistem:**
+> Penanganan alur logika pas proses krusial kayak autentikasi dibuat ketat. Alur "No" (waktu login gagal) terlihat jelas secara visual dengan panah yang balik ke atas (halaman input awal) biar pengguna validasi ulang.
 
 ![Activity Diagram](activity-rental.png)
+
+
+## 🛠️ Rencana Fitur Utama (Scope of Work)
+Mengacu ke hasil analisis diagram di atas, ini modul-modul utama yang bakal diimplementasikan pas tahap pengembangan kode nanti:
+* **Autentikasi & Otorisasi:** Sistem login terpusat buat User (Pelanggan & Admin).
+* **Manajemen Armada:** Fitur CRUD (Create, Read, Update, Delete) data mobil khusus buat Admin.
+* **Manajemen Reservasi:** Alur pemesanan mobil secara *real-time* oleh Pelanggan.
+* **Sistem Pembayaran:** Pencatatan riwayat transaksi dan konfirmasi pembayaran.
